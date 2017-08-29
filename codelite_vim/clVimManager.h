@@ -2,17 +2,20 @@
 #define __VIM_MANAGER_H__
 
 #include <wx/stc/stc.h>
-#include "vimCommands.h"
+#include <wx/kbdstate.h>
+#include <list>
+
+#include "globals.h"
 #include "ieditor.h"
 #include "event_notifier.h"
 #include "macros.h"
 #include "imanager.h"
-#include "globals.h"
+
 #include "codelite_events.h"
-#include <wx/kbdstate.h>
 #include "VimSettings.h"
-/*Experimental*/
-#include <list>
+#include "vimCommands.h"
+#include "clVimEditorStatus.h"
+#include "clVimRegistries.h"
 
 /**
  * @brief This Class is used to intercet the key event end rederect them
@@ -33,13 +36,13 @@ protected:
     void OnEditorClosing(wxCommandEvent& event);
     void OnWorkspaceClosing(wxCommandEvent& event);
     void OnAllEditorsClosing(wxCommandEvent& event);
+
     void OnCharEvt(wxKeyEvent& event);
     void OnKeyDown(wxKeyEvent& event);
-    wxString get_current_word();
-    void DoCleanup(bool unbind = true);
+
     void DoBindEditor(IEditor* editor);
-    void setUpVimBar();
-    void setUpVimBarPos();
+    void DoCleanup(bool unbind = true);
+
     // Internals
     void CloseCurrentEditor();
     void SaveCurrentEditor();
@@ -49,26 +52,17 @@ protected:
     void DeleteClosedEditorState();
     void DeleteAllEditorState();
 
-    void updateCarret();
-    void updateMessageModus();
-    void updateVimMessage();
-    
 private:
-    wxStatusBar* status_vim;
+
+    IManager*    m_mgr;
     VimSettings& m_settings;
-    IEditor* m_editor;
-    wxStyledTextCtrl* m_ctrl;
+
+    VimRegistries m_registries;
+
+    std::list<VimEditorStatus> m_editorStatesList;
     VimCommand m_currentCommand; /*!< command currenly */
     VimCommand m_lastCommand;    /*!< last command performed */
-    wxString m_tmpBuf;           /*!< tmporary buffer (of inserted text) */
-    IManager* m_mgr;
-    int m_caretInsertStyle;
-    int m_caretBlockStyle;
-    std::vector<VimBaseCommand*> m_editorStates;
-	
-    void IssueCommand();
-    void updateView();
-    void RepeatCommand();
+
 };
 
 #endif // __VIM_MANAGER_H__
