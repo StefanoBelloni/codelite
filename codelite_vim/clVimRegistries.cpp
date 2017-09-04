@@ -41,12 +41,12 @@ wxString VimRegistries::GetRegistry( const wxChar registry )
 /**
  * 
  */
-void SetRegistry( const wxChar registry ) { m_curr_registry = registry }
+void VimRegistries::SetRegistry( const wxChar registry ) { m_curr_registry = registry; }
 /* ===================================================================== */
 /**
  * 
  */
-void SetRegistry( const wxChar registry, const wxString buffer, const bool append )
+void VimRegistries::SetRegistry( const wxChar registry, const wxString buffer, const bool append )
 {
     SetRegistry(registry);
     std::size_t index;
@@ -65,7 +65,7 @@ void SetRegistry( const wxChar registry, const wxString buffer, const bool appen
 /**
  * 
  */
-void SetRegistry( const wxChar registry, const wxChar ch, const bool append )
+void VimRegistries::SetRegistry( const wxChar registry, const wxChar ch, const bool append )
 {
     SetRegistry(registry);
     std::size_t index;
@@ -104,7 +104,7 @@ void VimRegistries::InitRegistries()
 
 /* ===================================================================== */
 
-int GetRegistryTypeIndex( const wxChar& ch, VIM_REGISTRY_TYPE& type, std::size_t& index )
+void VimRegistries::GetRegistryTypeIndex( const wxChar& ch, VIM_REGISTRY_TYPE& type, std::size_t& index )
 {
 
     index = 0;
@@ -147,14 +147,14 @@ int GetRegistryTypeIndex( const wxChar& ch, VIM_REGISTRY_TYPE& type, std::size_t
 
 /* ===================================================================== */
 
-wxString& DoGetRegistry( const VIM_REGISTRY_TYPE& type, const std::size_t& index )
+wxString VimRegistries::DoGetRegistry( const VIM_REGISTRY_TYPE& type, const std::size_t& index )
 {
     switch( type ) {
     case VIM_REGISTRY_TYPE::ALPHA:
         return m_alpha_registries[ index ];
     case VIM_REGISTRY_TYPE::NUMERIC:
         return m_numeric_registries[ index ];
-    case return VIM_REGISTRY_TYPE::READ_ONLY:
+    case VIM_REGISTRY_TYPE::READ_ONLY:
         return m_read_registries[ index ];
     default:
         /*TODO THROW Exemption*/

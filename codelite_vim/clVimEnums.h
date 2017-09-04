@@ -15,5 +15,5 @@ namespace VimFlags {
     const int visual_mode    = 1 << 3;
 }
 
-#endif // _CL_VIM_ENUMS_
-e
+
+#endif // _CL_VIM_EN

@@ -71,9 +71,9 @@ private:
     bool        m_append_alpha;
     wxChar      m_curr_registry;
 
-    void      initRegistries();
-    void      GetRegistryTypeIndex( const wxChar& ch, VIM_REGISTRY_TYPE& type, std::size_t& index );
-    wxString& DoGetRegistry( const VIM_REGISTRY_TYPE& type, const std::size_t& index );
+    void         InitRegistries();
+    void        GetRegistryTypeIndex( const wxChar& ch, VIM_REGISTRY_TYPE& type, std::size_t& index );
+    wxString DoGetRegistry( const VIM_REGISTRY_TYPE& type, const std::size_t& index );
     
 };
 

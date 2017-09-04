@@ -13,7 +13,7 @@
 
 #include "codelite_events.h"
 #include "VimSettings.h"
-#include "vimCommands.h"
+#include "clVimCommand.h"
 #include "clVimEditorStatus.h"
 #include "clVimRegistries.h"
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CodeLite_Project Name="codelite_vim" Version="10.0.0">
   <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00010001N0013Win_x64_Debug000000000000]]>
+    </Plugin>
     <Plugin Name="CMakePlugin">
       <![CDATA[[{
   "name": "Win_x64_Debug",
@@ -13,24 +16,25 @@
   "parentProject": ""
  }]]]>
     </Plugin>
-    <Plugin Name="qmake">
-      <![CDATA[00010001N0013Win_x64_Debug000000000000]]>
-    </Plugin>
   </Plugins>
   <VirtualDirectory Name="src">
     <File Name="codelite_vim.cpp"/>
-    <File Name="README.txt"/>
-    <File Name="vim_manager.cpp"/>
-    <File Name="vimCommands.cpp"/>
     <File Name="VimSettingsDlg.cpp"/>
     <File Name="VimSettings.cpp"/>
+    <File Name="clVimRegistries.cpp"/>
+    <File Name="clVimManager.cpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
     <File Name="codelite_vim.h"/>
-    <File Name="vim_manager.h"/>
-    <File Name="vimCommands.h"/>
     <File Name="VimSettings.h"/>
     <File Name="VimSettingsDlg.h"/>
+    <File Name="clEdEditor.h"/>
+    <File Name="clVimBaseCommand.h"/>
+    <File Name="clVimCommand.h"/>
+    <File Name="clVimEditorStatus.h"/>
+    <File Name="clVimEnums.h"/>
+    <File Name="clVimManager.h"/>
+    <File Name="clVimRegistries.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="CMake">
     <File Name="CMakeLists.txt"/>

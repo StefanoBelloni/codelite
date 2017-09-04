@@ -6,7 +6,7 @@
 #include <wx/settings.h>
 #include <wx/dialog.h>
 #include "macros.h"
-#include "vim_manager.h"
+#include "clVimManager.h"
 #include "VimSettingsDlg.h"
 #include "event_notifier.h"
 #include "VimSettings.h"
