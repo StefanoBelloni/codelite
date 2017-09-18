@@ -1,9 +1,12 @@
 #include "clVimManager.h"
 
 VimManager::VimManager(IManager* manager, VimSettings& settings)
-{}
+    : m_settings(settings)
+{
+    this->m_mgr = manager;
+}
 
-virtual VimManager::~VimManager()
+VimManager::~VimManager()
 {}
 
 void VimManager::SettingsUpdated()
@@ -25,7 +28,7 @@ void VimManager::OnKeyDown(wxKeyEvent& event){}
 
 void VimManager::DoBindEditor(IEditor* editor){}
 
-void VimManager::DoCleanup(bool unbind = true){}
+void VimManager::DoCleanup(bool unbind){}
 
 void VimManager::CloseCurrentEditor(){}
 

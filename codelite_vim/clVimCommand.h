@@ -9,6 +9,7 @@ class VimCommand : public VimBaseCommand
 {
 public:
     
+    VimCommand(){};
     VimCommand(const VimRegistries& registries);
     bool OnSpecialKey();
     bool OnNewChar();
