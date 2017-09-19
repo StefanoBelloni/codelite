@@ -9,13 +9,12 @@ class VimCommand : public VimBaseCommand
 {
 public:
     
-    VimCommand(){};
-    VimCommand(const VimRegistries& registries);
+    VimCommand(VimRegistries& registries) : m_registries(registries) {};
     bool OnSpecialKey();
     bool OnNewChar();
     void SetEditor();
 private:
-    VimRegistries registries;
+    VimRegistries& m_registries;
     
 };
     

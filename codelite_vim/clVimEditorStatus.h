@@ -8,7 +8,7 @@ class VimEditorStatus
     
 public:
 
-    VimEditorStatus();
+    VimEditorStatus(){};
     explicit VimEditorStatus( const VimCommand& vimCommand);
     explicit VimEditorStatus( const VimBaseCommand& vimBaseCommand);
     ~VimEditorStatus();

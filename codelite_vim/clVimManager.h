@@ -16,6 +16,7 @@
 #include "clVimCommand.h"
 #include "clVimEditorStatus.h"
 #include "clVimRegistries.h"
+#include "clEdEditor.h"
 
 /**
  * @brief This Class is used to intercet the key event end rederect them
@@ -32,6 +33,9 @@ public:
     void SettingsUpdated();
 
 protected:
+    void DoBindEvts();
+    void DoUnbindEvts();
+
     void OnEditorChanged(wxCommandEvent& event);
     void OnEditorClosing(wxCommandEvent& event);
     void OnWorkspaceClosing(wxCommandEvent& event);
@@ -44,6 +48,9 @@ protected:
     void DoCleanup(bool unbind = true);
 
     // Internals
+
+    void InitVimManager(IManager* manager);
+    
     void CloseCurrentEditor();
     void SaveCurrentEditor();
 
@@ -60,8 +67,12 @@ private:
     VimRegistries m_registries;
 
     std::list<VimEditorStatus> m_editorStatesList;
+    VimEditorStatus *curr_ed_status;
+
     VimCommand m_currentCommand; /*!< command currenly */
     VimCommand m_lastCommand;    /*!< last command performed */
+
+    clEdEditor m_ed;
 
 };
 

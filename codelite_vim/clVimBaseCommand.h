@@ -4,17 +4,31 @@
 #include <utility>
 #include <wx/chartype.h>
 #include "clVimEnums.h"
+#include "ieditor.h"
 
 class VimCommand;
+
+struct VimInfo
+{
+    VimManagerAction eAction;
+    VimManagerError  eError;
+
+};
 
 class VimBaseCommand
 {
 public:
-    VimBaseCommand();
+    VimBaseCommand(){};
     explicit VimBaseCommand(const VimBaseCommand& cmd);
     explicit VimBaseCommand(const VimCommand& cmd);
+
+    void SetCurrentEditor(IEditor *current_editor);
     
 protected:
+
+    IEditor          *m_curr_editor;
+    wxStyledTextCtrl *m_ctrl;
+    
     std::pair<VimModi,int> m_modus;   /*modus and flag*/
 
     int      m_repeat;           /*!< number of repetition for the command */
